@@ -5,11 +5,21 @@ const puppeteer = require('puppeteer');
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  // viewport and device scale factor of my laptop
+  // Set viewport untuk ponsel Android
   await page.setViewport({
-      width: 2880,
-      height: 1800,
-      deviceScaleFactor: 2,
+    width: 360,
+    height: 640,
+    deviceScaleFactor: 3, // Resolusi umum untuk ponsel modern
+  });
+
+  // Set user agent ke Chrome
+  await page.setUserAgent(
+    'Mozilla/5.0 (Linux; Android 10; Mobile; rv:109.0) Gecko/20100101 Chrome/109.0.0.0 Safari/537.36'
+  );
+
+  // Tambahkan referer di header permintaan
+  await page.setExtraHTTPHeaders({
+    referer: 'https://www.google.com',
   });
   
   // Akses halaman yang diinginkan
