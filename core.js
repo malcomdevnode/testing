@@ -6,7 +6,7 @@ const puppeteer = require('puppeteer');
   const page = await browser.newPage();
 
   // Akses halaman yang diinginkan
-  await page.goto('https://www.google.com', {
+  await page.goto('http://dialogues-scolaires.pages.dev/répondre/5191288', {
       timeout: 15 * 1000,
       waitUntil: ["domcontentloaded"],
   });
