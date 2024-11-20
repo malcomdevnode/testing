@@ -31,6 +31,37 @@ const puppeteer = require('puppeteer');
   await new Promise((resolve)=>{
     setTimeout(()=>{
       resolve();
+    },5000);
+  });
+
+  // Fungsi untuk scroll hingga akhir halaman
+  const autoScroll = async (page) => {
+    await page.evaluate(async () => {
+      await new Promise((resolve) => {
+        let totalHeight = 0;
+        const distance = 100; // Jarak scroll dalam piksel
+        const timer = setInterval(() => {
+          const scrollHeight = document.body.scrollHeight;
+          window.scrollBy(0, distance);
+          totalHeight += distance;
+
+          if (totalHeight >= scrollHeight) {
+            clearInterval(timer);
+            resolve();
+          }
+        }, 100); // Interval scroll dalam milidetik
+      });
+    });
+  };
+
+  // Scroll hingga akhir halaman
+  console.log('Scrolling ke bawah...');
+  await autoScroll(page);
+  console.log('Selesai scrolling.');
+
+  await new Promise((resolve)=>{
+    setTimeout(()=>{
+      resolve();
     },15000);
   });
 
