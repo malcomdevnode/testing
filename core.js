@@ -19,7 +19,7 @@ const puppeteer = require('puppeteer');
 
   // Tambahkan referer di header permintaan
   await page.setExtraHTTPHeaders({
-    referer: 'https://www.google.com',
+    referer: 'https://www.google.com/',
   });
   
   // Akses halaman yang diinginkan
