@@ -5,6 +5,13 @@ const puppeteer = require('puppeteer');
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
+  // viewport and device scale factor of my laptop
+  await page.setViewport({
+      width: 2880,
+      height: 1800,
+      deviceScaleFactor: 2,
+  });
+  
   // Akses halaman yang diinginkan
   await page.goto('https://ipinfo.io/', {
       timeout: 15 * 1000,
