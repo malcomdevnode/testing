@@ -32,7 +32,6 @@ jobs:
 
       - name: Run Puppeteer Script
         run: |
-          mkdir -p screenshots
           node core.js
 
       - name: Save Screenshot to Repository
