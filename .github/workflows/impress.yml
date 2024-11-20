@@ -1,4 +1,4 @@
-name: Run Puppeteer Every 5 Minutes
+name: Run Puppeteer Every 5 Minutes and Save Screenshot
 
 on:
   schedule:
@@ -23,13 +23,22 @@ jobs:
 
       - name: Initialize Node.js Project
         run: |
-          # Inisialisasi npm dan membuat package.json jika belum ada
           if [ ! -f package.json ]; then
-            npm init -y  # Ini akan membuat package.json
+            npm init -y
           fi
 
       - name: Install Puppeteer
-        run: npm install puppeteer  # Install Puppeteer
+        run: npm install puppeteer
 
-      - name: Run Puppeteer Script (core.js)
-        run: node core.js  # Jalankan script Puppeteer dengan nama core.js
+      - name: Run Puppeteer Script
+        run: |
+          mkdir -p screenshots
+          node core.js
+
+      - name: Save Screenshot to Repository
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add screenshots/screenshot.png
+          git commit -m "Add screenshot $(date +'%S-%M-%H_%d-%m-%Y')"
+          git push
