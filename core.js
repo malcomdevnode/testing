@@ -6,7 +6,7 @@ const puppeteer = require('puppeteer');
   const page = await browser.newPage();
 
   // Akses halaman yang diinginkan
-  await page.goto('http://www.google.com', {
+  await page.goto('https://ipinfo.io/', {
       timeout: 15 * 1000,
       waitUntil: ["domcontentloaded"],
   });
