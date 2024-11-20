@@ -1,0 +1,35 @@
+name: Run Puppeteer Every 5 Minutes
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"  # Menjalankan setiap 5 menit
+  workflow_dispatch:  # Memungkinkan Anda menjalankan workflow secara manual
+
+permissions:
+  contents: write
+
+jobs:
+  puppeteer_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js (latest)
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'latest'
+
+      - name: Initialize Node.js Project
+        run: |
+          # Inisialisasi npm dan membuat package.json jika belum ada
+          if [ ! -f package.json ]; then
+            npm init -y  # Ini akan membuat package.json
+          fi
+
+      - name: Install Puppeteer
+        run: npm install puppeteer  # Install Puppeteer
+
+      - name: Run Puppeteer Script (core.js)
+        run: node core.js  # Jalankan script Puppeteer dengan nama core.js
