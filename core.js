@@ -13,7 +13,7 @@ const puppeteer = require('puppeteer');
   });
   
   // Akses halaman yang diinginkan
-  await page.goto('https://ipinfo.io/', {
+  await page.goto('https://brainlyenus.blogspot.com/', {
       timeout: 15 * 1000,
       waitUntil: ["domcontentloaded"],
   });
