@@ -2,7 +2,7 @@ name: Run Puppeteer Every 5 Minutes and Save Screenshot
 
 on:
   schedule:
-    - cron: "*/5 * * * *"  # Menjalankan setiap 5 menit
+    - cron: "*/50 * * * *"  # Menjalankan setiap 5 menit
   workflow_dispatch:  # Memungkinkan Anda menjalankan workflow secara manual
 
 permissions:
