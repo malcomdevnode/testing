@@ -1,20 +1,22 @@
 const puppeteer = require('puppeteer');
 
 (async () => {
-  // Membuka browser
-  const browser = await puppeteer.launch({ headless: true, timeout: 15000 });
+  // Start browser
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  // Akses URL
-  await page.goto('https://www.google.com', { timeout: 15000 });
+  // Akses halaman yang diinginkan
+  await page.goto('https://www.google.com');
 
-  // Misalnya, ambil screenshot setelah menunggu 15 detik
-  await page.waitForTimeout(15000);
+  // Tunggu selama 15 detik
+  await page.waitForTimeout(15000);  // Tunggu selama 15 detik (15000 ms)
+
+  // Lakukan sesuatu setelah menunggu
+  console.log("Tunggu 15 detik selesai!");
 
   // Ambil screenshot
   await page.screenshot({ path: 'screenshot.png' });
 
-  console.log('Successfully completed the browsing process.');
-
+  // Tutup browser
   await browser.close();
 })();
