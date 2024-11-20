@@ -11,6 +11,12 @@ const puppeteer = require('puppeteer');
       waitUntil: ["domcontentloaded"],
   });
 
+  await new Promise((resolve)=>{
+    setTimeout(()=>{
+      resolve();
+    },15000);
+  });
+
   // Lakukan sesuatu setelah menunggu
   console.log("Tunggu 15 detik selesai!");
 
